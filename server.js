@@ -17,12 +17,12 @@ app.use(express.static("public"));
 // GET route for the homepage
 
 app.get("/", (req, res) =>
-  res.sendFile(path.join(dirname, "/public/index.html"))
+  res.sendFile(path.join(__dirname, "/public/index.html"))
 );
 
 // GET "/notes" returns the notes.html file.
 app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 // GET "*" should return the index.html file for any other file paths.

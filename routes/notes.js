@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
     const inputNote = {
       title,
       text,
-      it: uuidv4(),
+      id: uuidv4(),
     };
 
     readAndAppend(inputNote, "./db/db.json");
@@ -48,7 +48,7 @@ router.delete("/:id", (req, res) => {
 
     // This code will get rid of the matching note id
     for (let i = 0; i < noteData.length; i++) {
-      if (requested === noteData[id].id.toLowerCase()) {
+      if (requestId === noteData[i].id.toLowerCase()) {
         match = true;
         noteData.splice(i, 1);
       }
