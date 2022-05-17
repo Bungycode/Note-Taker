@@ -29,6 +29,12 @@
   ## License 
   The application is covered under the ISC license.
 
+  ## Image
+  ![This is an image of the finished deployed application](./public/assets/images/Note-Taker-Image.png)
+
+  ## Deployable Site
+  https://ancient-cliffs-25764.herokuapp.com/%20deployed%20to%20Heroku
+
   ## Questions
   You can search for my repo on GitHub by entering Bungycode and you can view my projects at https://github.com/Bungycode. If you have any questions, please contact me at thedevandrew@gmail.com
 
