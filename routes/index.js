@@ -1,71 +1,9 @@
-const router = require ("express").Router();
-const { v4: uuidv4 } = require("uuid");
+const express = require("express");
 
-const {
-  readAndAppend,
-  readFromFile,
-  writeToFile,
-} = require("../helpers/fsUtils");
+// Import our modular routers for /tips path and /feedback path.
+const notesRouter = require("./notes");
+const app = express();
 
-// This is a GET route for retrieving all the data
-router.get("/", (req, res) =>
-  readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)))
-);
+app.use ("/notes", notesRouter);
 
-// This is a POST route for submitting feedback
-router.post("/", (req, res) => {
-  // This is a destructuring assignment for the items in req.body
-  const { title, text } = req.body;
-
-  // If all the required properties are present
-  if (title && text) {
-    // below is the variable for the object we will save
-    const inputNote = {
-      title,
-      text,
-      it: uuidv4(),
-    };
-
-    readAndAppend(inputNote, "./db/db.json");
-
-    const response = {
-      status: "success",
-      body: newNote,
-    };
-
-    res.json(response);
-  } else {
-    res.json("Error in posting feedback");
-  }
-}); 
-
-input.delete("/:id", (req, res) => {
-  readFromFile("./db/db.json")
-    .then((data) => {
-      const requestId = req.params.id.toLowerCase();
-      let match = false;
-      let noteData = JSON.parse(data);
-
-    // This code will get rid of the matching note id
-    for (let i = 0; i < noteData.length; i++) {
-      if (requested === noteData[id].id.toLowerCase()) {
-        match = true;
-        noteData.splice(i, 1);
-      }
-    }
-
-    if (match) {
-      // write to the db.json
-      writeToFile("./db/db.json", noteData);
-      const response = {
-        status: "success",
-      };
-      res.json(response);
-    } else {
-      res.json("No id found");
-    }
-  })
-  .catch((error) => console.log(error));
-});
-
-module.exports = router;
+module.exports = app;
